@@ -1,26 +1,18 @@
-<div class="container">
-    <h1 class="mt-4">Candidatos a Papa - 2025</h1>
+<div class="container mt-4">
+  <h2 class="text-primary mb-3">Lista de Cardenales</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let candidato of candidatos">
+      <div class="card mb-4 shadow-sm" (click)="verDetalle(candidato.id)" style="cursor:pointer">
+        <div class="card-body">
+          <h5 class="card-title">{{ candidato.nombre }}</h5>
+          <p class="card-text">País: {{ candidato.pais_origen }}</p>
+          <p class="card-text">Edad: {{ candidato.edad }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <table class="table table-bordered mt-4">
-        <thead>
-            <tr style="--bs-table-bg: #C41E3A; --bs-table-color: white;">
-                <th scope="col">Nombre</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Pais Origen</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Vertiente Religiosa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let candidato of candidatos" (click)="seleccionarCandidato(candidato)">
-                <td>{{ candidato.nombre }}</td>
-                <td><img [src]="candidato.foto" alt="{{ candidato.nombre }}" style="width: 50px; height: auto;"></td>
-                <td>{{ candidato.pais_origen }}</td>
-                <td>{{ candidato.edad }} años</td>
-                <td>{{ candidato.vertiente_religiosa }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <app-candidatos-detail *ngIf="candidatoSeleccionado" [candidato]="candidatoSeleccionado"></app-candidatos-detail>
+  <div class="alert alert-success mt-5" *ngIf="papaSeleccionado">
+    <strong>Nuevo Papa</strong> El cardenal elegido aleatoriamente como nuevo Papa es: <b>{{ papaSeleccionado.nombre }}</b>
+  </div>
 </div>

@@ -1,14 +1,10 @@
-<div>
-    <h3>{{candidato.nombre}}</h3>
-    <div>
-        <div style="width: 50%; display: inline-block;">
-            <img [src]="candidato.foto" alt="{{ candidato.nombre }}" style="width: 80%; ">
-        </div>
-        
-        <div style="width: 50%; display: inline-block;">
-            <p><strong>Pais de Origen: </strong> {{candidato.pais_origen}} </p>
-            <p><strong>Vertiente Religiosa: </strong> {{candidato.vertiente_religiosa}} </p>
-            <p><strong>Edad: </strong> {{candidato.edad}} </p>
-        </div>
+<div class="container mt-4" *ngIf="candidato">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{ candidato.nombre }}</h3>
+      <p class="card-text">País de origen: {{ candidato.pais_origen }}</p>
+      <p class="card-text">Edad: {{ candidato.edad }}</p>
+      <button class="btn btn-primary mt-3" (click)="volver()">Volver al listado</button>
     </div>
+  </div>
 </div>
